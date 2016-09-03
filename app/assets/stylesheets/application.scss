@@ -49,7 +49,7 @@
 }
 
 #nav-desktop li:hover {
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 .logo {
@@ -86,16 +86,16 @@
 /* Grafica calcolo miscela e rapporti*/
 .btn-calc {
 	width: 100%;
-	background-color: #ff3d00;
+	background-color: #0277bd;
 	font-size: 18px;
 }
 
 .btn-calc:hover {
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 input[type=range] + .thumb {
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 input[type=range] + .thumb.active .value {
@@ -105,15 +105,15 @@ input[type=range] + .thumb.active .value {
 }
 
 input[type=range]::-webkit-slider-thumb{
-	background: #ff3d00;
+	background: #0277bd;
 }
 
 input[type=range]::-moz-range-thumb{
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 input[type=range]::-ms-thumb{
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 input[type=text]:disabled {
@@ -135,12 +135,12 @@ input[type=text]:disabled {
 
 .src-btn {
 	margin-top: 7px;
-	background-color: #ff3d00;
+	background-color: #0277bd;
 	width: 100%;
 }
 
 .src-btn:hover {
-	background-color: #ff3d00;
+	background-color: #0277bd;
 }
 
 .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
