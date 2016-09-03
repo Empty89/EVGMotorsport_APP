@@ -1,0 +1,91 @@
+<script>
+  function show() {
+    var table = document.getElementById('tracciati_filtrati');
+
+    table.style.display = 'block';
+  }
+</script>
+
+<div class="container">
+
+<%= form_tag(tracks_path, :method => "get", id: "search-form") do %>
+  <div class="row">
+    <div class="input_field col s10">
+      <%= select_tag(:search, options_for_select([['Nord', 'nord'], ['Centro', 'centro'], ['Sud', 'sud']]), {prompt: 'Mostra tutti i tracciati'}) %>
+    </div>
+      <%= submit_tag "Filtra", :onclick => "return show();", class: "form_submit col s2 waves-effect waves-light btn src-btn" %>
+  </div>
+<% end %>
+
+  <p id="notice"><%= notice %></p>
+
+  <div class="row" id="tracciati_filtrati">
+
+    <% @tracks.each do |track| %>
+
+      <%= link_to track do %>
+
+        <div id="circuit" class="col s6 center">
+
+          <div class="card small">
+            <div class="card-image">
+              <%= image_tag track.city, size: "450x425" %>
+            </div>
+            <div class="card-content">
+              <h4 class ="rid deep-orange-text text-accent-3"><%= track.name %> di <%= track.city %></h4>
+            </div>
+          </div>      
+
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+  </div>
+
+<% if admin_signed_in? %>
+
+  <h1>Tracks</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Region</th>
+        <th>Zone</th>
+        <th>Mag band</th>
+        <th>Length</th>
+        <th>Description</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tracks.each do |track| %>
+        <tr>
+          <td><%= track.name %></td>
+          <td><%= track.city %></td>
+          <td><%= track.address %></td>
+          <td><%= track.region %></td>
+          <td><%= track.zone %></td>
+          <td><%= track.mag_band %></td>
+          <td><%= track.length %></td>
+          <td><%= track.description %></td>
+          <td><%= link_to 'Show', track %></td>
+          <td><%= link_to 'Edit', edit_track_path(track) %></td>
+          <td><%= link_to 'Destroy', track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Track', new_track_path %>
+
+<% end %>
+
+</div>

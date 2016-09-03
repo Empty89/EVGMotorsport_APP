@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>APP</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Google Font -->
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Nova+Flat|Press+Start+2P|Doppio+One" %>
+
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+
+    <!-- SumoMe -->
+    <script src="//load.sumome.com/" data-sumo-site-id="14d8d0009f886e00a127010041ed40006c156300e7d910009aa28c0056423700" async="async"></script>
+
+  </head>
+
+  <body>
+
+  	<%= render "layouts/header" %>
+
+  	<main>
+
+    	<%= yield %>
+
+	  </main>
+
+  </body>
+
+  	<script>
+
+      $(document).ready(function(){
+      
+        // Sidebar
+        $('.button-collapse').sideNav({
+            menuWidth: 100, // Default is 240
+            edge: 'right', // Choose the horizontal origin
+            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          }
+        );
+
+        $('.collapsible').collapsible();
+
+        $('select').material_select();
+
+        // Hide sideNav
+        $('.button-collapse').sideNav('hide');
+        // Show sideNav
+        //$('.button-collapse').sideNav('show');
+
+        // Dropdown
+        $('.dropdown-button').dropdown({
+             inDuration: 300,
+             outDuration: 300,
+             constrain_width: true, // Does not change width of dropdown to that of the activator
+             gutter: 0, // Spacing from edge
+             hover: true, // Activate on hover
+             belowOrigin: true // Displays dropdown below the button
+             }
+        );
+      });
+
+	  </script>
+
+</html>

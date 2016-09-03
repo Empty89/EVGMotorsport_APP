@@ -1,0 +1,43 @@
+<head>
+
+	<script>
+	  function misc() {
+	    var litri = document.getElementById("litri").value;
+	    var perc = document.getElementById("perc").value;
+	    var olio = litri * perc * 10;
+	    return olio;
+	  }
+	</script>
+
+</head>
+
+<div class="container center" id="form">
+
+	<form name="calculator">
+		<div>
+			<h4>QUANTITA' DI BENZINA [l]</h4>
+		    <p class="range-field">
+		      <input type="range" id="litri" min="0.5" max="25" step="0.5" onChange="misc()" />
+		    </p>
+		    <br>
+		</div>
+		<div>
+		    <h4 calss="center">PERCENTUALE MISCELA:</h4>
+		    <p class="range-field">
+		      <input type="range" id="perc" min="2" max="6" onChange="misc()" />
+		    </p>
+		    <br>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l6">
+		    	<h4>QUANTITA' DI OLIO [ml]</h4>
+			</div>
+			<div class="col s12 m12 l6">
+		    	<input disabled class="center" type="text" name="ans" value="">
+			</div>
+		</div>
+		<br>
+		<a class="waves-effect waves-light btn-large btn-calc" value="Calcola" onClick="document.calculator.ans.value=misc()">CALCOLA</a>
+  	</form>
+        
+</div>

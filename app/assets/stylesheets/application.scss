@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "materialize";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.bold {
+	font-weight: bold;
+}
+
+/* Navbar */
+.side-nav-credits {
+	position: fixed;
+	bottom: 80px;
+	text-align: center;
+}
+
+.side-nav li {
+    font-size: x-small;
+    line-height: 15px;
+}
+
+.side-nav a {
+    line-height: 15px;
+    height: 30px;
+}
+
+.side-nav-home {
+	margin-top: 65px;
+}
+
+.side-nav-icons {
+	margin-left: 16px;
+}
+
+#nav-desktop li:hover {
+	background-color: #ff3d00;
+}
+
+.logo {
+	padding-top: 5px;
+}
+
+/* Card selezione */
+.card .card-content {
+	font-family: 'Nova Flat', cursive;
+}
+
+@media only screen and (max-width: 992px) {
+	nav .brand-logo {
+	    left: 50%;
+	    transform: translateX(-50%);
+	    width: 93%;
+	    height: 93%;
+	}
+
+	.rid {
+		font-size: 2.9em;
+		padding-top: 8px;
+	}
+}
+
+#circuit .card .card-content {
+	padding: 5px;
+}
+
+#circuit .card.small .card-image, .card.medium .card-image, .card.large .card-image {
+	min-height: 60%
+}
+
+/* Grafica calcolo miscela e rapporti*/
+.btn-calc {
+	width: 100%;
+	background-color: #ff3d00;
+	font-size: 18px;
+}
+
+.btn-calc:hover {
+	background-color: #ff3d00;
+}
+
+input[type=range] + .thumb {
+	background-color: #ff3d00;
+}
+
+input[type=range] + .thumb.active .value {
+    margin-left: -1px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+input[type=range]::-webkit-slider-thumb{
+	background: #ff3d00;
+}
+
+input[type=range]::-moz-range-thumb{
+	background-color: #ff3d00;
+}
+
+input[type=range]::-ms-thumb{
+	background-color: #ff3d00;
+}
+
+input[type=text]:disabled {
+	color: #212121;
+	font-size: xx-large;
+	font-family: 'Press Start 2P', cursive;
+	height: 4rem;
+}
+
+#form h4 {
+	font-family: 'Doppio One', sans-serif;
+}
+
+/* search bar */
+
+.dropdown-content li > a, .dropdown-content li > span {
+	color: black;
+}
+
+.src-btn {
+	margin-top: 7px;
+	background-color: #ff3d00;
+	width: 100%;
+}
+
+.src-btn:hover {
+	background-color: #ff3d00;
+}
+
+.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
+    border: 0;
+    font-style: inherit;
+    font-size: medium;
+    text-transform: inherit;
+    background: none;
+    width: 100%;
+    padding: 2px;
+    padding-top: 8px;
+    padding-bottom: 9px;
+}

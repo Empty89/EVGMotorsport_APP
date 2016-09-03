@@ -1,0 +1,158 @@
+<head>
+
+	<script>
+	  function rapporti() {
+	    var pign = document.getElementById("pign").value;
+	    var cor = document.getElementById("cor").value;
+	    var rapp_unrounded = (cor/pign);
+	    var rapp = Math.round(rapp_unrounded*100)/100;
+	    return rapp;
+	  }
+
+	  function show() {
+	  	var table = document.getElementById('table');
+
+	  	table.style.display = 'block';
+	  }
+
+	  function new_row(cor) {
+
+	  	clean_table();
+
+  		var row = document.getElementById('trs');
+
+  		var posizione = row.rowIndex + 1;
+
+  		var j = 0;
+
+  		var cor_int = Math.trunc(cor);
+
+		for (i=cor_int-2; i<cor_int+3; i++) {
+
+			if (i == 63) continue;
+			if (i == 64) continue;
+			if (i == 96) break;
+
+		var rapp9 =  Math.round((i/9)*100)/100;
+		var rapp10 =  Math.round((i/10)*100)/100;
+		var rapp11 =  Math.round((i/11)*100)/100;
+		var rapp12 =  Math.round((i/12)*100)/100;
+		var rapp13 =  Math.round((i/13)*100)/100;
+
+
+		accoda(posizione + j, i, rapp9, rapp10, rapp11, rapp12, rapp13);
+
+		j++;
+		
+		}
+	  }
+
+	  function accoda(posizione, ncor, campo1, campo2, campo3, campo4, campo5) {
+
+	  	var oTable = document.getElementById('trapp');
+	  	var oTr = oTable.insertRow(posizione);
+	  	var oThi = document.createElement("TH");
+	  	oThi.className="center";
+	  	var oTd1 = document.createElement("TD");
+	  	var oTd2 = document.createElement("TD");
+	  	var oTd3 = document.createElement("TD");
+	  	var oTd4 = document.createElement("TD");
+	  	var oTd5 = document.createElement("TD");
+
+	  	var oText_Campoi = document.createTextNode(ncor);
+	  	var oText_Campo1 = document.createTextNode(campo1);
+		var oText_Campo2 = document.createTextNode(campo2);
+		var oText_Campo3 = document.createTextNode(campo3);
+		var oText_Campo4 = document.createTextNode(campo4);
+		var oText_Campo5 = document.createTextNode(campo5);
+
+	  	oThi.appendChild(oText_Campoi);
+	  	oTd1.appendChild(oText_Campo1);
+	  	oTd2.appendChild(oText_Campo2);
+	  	oTd3.appendChild(oText_Campo3);
+	  	oTd4.appendChild(oText_Campo4);
+	  	oTd5.appendChild(oText_Campo5);
+
+	  	oTr.appendChild(oThi);
+		oTr.appendChild(oTd1);
+		oTr.appendChild(oTd2);
+		oTr.appendChild(oTd3);
+		oTr.appendChild(oTd4);
+		oTr.appendChild(oTd5);
+	  }
+
+	  function clean_table() {
+
+	  	var oTable = document.getElementById('trapp');
+	  	var nrows = oTable.rows.length;
+	 	
+	 	if (nrows == 7) {
+		  	oTable.deleteRow(oTable.rows.length-5);
+		  	oTable.deleteRow(oTable.rows.length-4);
+		  	oTable.deleteRow(oTable.rows.length-3);
+		  	oTable.deleteRow(oTable.rows.length-2);
+		  	oTable.deleteRow(oTable.rows.length-1);
+	  	} else if (nrows == 5) {
+		  	oTable.deleteRow(oTable.rows.length-3);
+		  	oTable.deleteRow(oTable.rows.length-2);
+		  	oTable.deleteRow(oTable.rows.length-1);
+	  	}
+	  }
+
+	</script>
+
+</head>
+
+<div class="container center" id="form">
+
+	<form name="calculator">
+		<div>
+			<h4>DENTI PIGNONE</h4>
+		    <p class="range-field">
+		      <input type="range" id="pign" min="9" max="13" onChange="rapporti()" />
+		    </p>
+		    <br>
+		</div>
+		<div>
+		    <h4>DENTI CORONA</h4>
+		    <p class="range-field">
+		      <input type="range" id="cor" min="65" max="95" onChange="rapporti()" />
+		    </p>
+		    <br>
+		</div>
+		<div class="row">
+			<div class="col s12 m12 l6">
+		    	<h4 >RAPPORTO</h4>
+			</div>
+			<div class="col s12 m12 l6">
+		    	<input disabled class="center" type="text" name="ans" value="" />
+			</div>
+		</div>
+		<br>
+		<a class="waves-effect waves-light btn-large btn-calc" value="Calcola" onClick="document.calculator.ans.value=rapporti(); show(); new_row(document.getElementById('cor').value);">CALCOLA</a>
+  	</form>
+</div>
+
+<div id="table" style="display:none" class="container">
+	<table class="striped" id="trapp">
+		<thead>
+			<tr>
+				<th class="center">Denti Corona</th>
+				<th colspan="5" class="center">Denti Pignone</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr id="trs">
+				<th></th>
+				<th>9</th>
+				<th>10</th>
+				<th>11</th>
+				<th>12</th>
+				<th>13</th>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
