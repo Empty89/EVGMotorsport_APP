@@ -71,7 +71,6 @@
 	    transform: translateX(-50%);
 	    width: 93%;
 	    height: 93%;
-	    zoom: 300%;
 	}
 
 	.rid {
@@ -87,12 +86,12 @@
 	}
 
 	nav {
-		zoom: 150%;
+		zoom: 180%;
 	}
 
 	main {
 		padding-top: 35px;
-		zoom: 150%;
+		zoom: 180%;
 	}
 }
 
@@ -117,12 +116,14 @@
 
 input[type=range] + .thumb {
 	background-color: #0277bd;
+	transform: rotate(0deg);
 }
 
 input[type=range] + .thumb.active .value {
-    margin-left: 9px;
-    margin-top: 15px;
-    font-size: 25px;
+    margin-left: 4px;
+    margin-top: 21px;
+    font-size: 22px;
+    transform: rotate(0deg);
 }
 
 input[type=range]::-webkit-slider-thumb{

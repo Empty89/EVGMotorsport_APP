@@ -15,7 +15,7 @@
 	  	table.style.display = 'block';
 	  }
 
-	  function new_row(cor) {
+	  function new_row(cor, pig) {
 
 	  	clean_table();
 
@@ -23,80 +23,226 @@
 
   		var posizione = row.rowIndex + 1;
 
-  		var j = 0;
-
   		var cor_int = Math.trunc(cor);
+  		var pig_int = Math.trunc(pig);
 
-		for (i=cor_int-2; i<cor_int+3; i++) {
+  		var R_prec =  Math.round(((cor_int-1)/pig_int)*100)/100;
+  		var R_0 =  Math.round((cor_int/pig_int)*100)/100;
+  		var R_succ =  Math.round(((cor_int+1)/pig_int)*100)/100;
 
-			if (i == 63) continue;
-			if (i == 64) continue;
-			if (i == 96) break;
+  		var cor_array = new Array("/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/");
+  		var rapp_array = new Array("/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/");
 
-		var rapp9 =  Math.round((i/9)*100)/100;
-		var rapp10 =  Math.round((i/10)*100)/100;
-		var rapp11 =  Math.round((i/11)*100)/100;
-		var rapp12 =  Math.round((i/12)*100)/100;
-		var rapp13 =  Math.round((i/13)*100)/100;
+  		var i = 0;
 
+		for (p = 9; p<14; p++) {
 
-		accoda(posizione + j, i, rapp9, rapp10, rapp11, rapp12, rapp13);
+			for (c = 65; c < 94; c++){
 
-		j++;
-		
+				var rapporto = Math.round((c/p)*100)/100;
+
+				if ((rapporto >= R_prec) && (rapporto <= R_succ)) {
+
+					var rapporto1 = Math.round(((c+1)/p)*100)/100;
+					var rapporto2 = Math.round(((c+2)/p)*100)/100;
+
+					cor_array[i] = c;
+					cor_array[i+1] = c+1;
+					cor_array[i+2] = c+2;
+
+					rapp_array[i] = rapporto;
+					rapp_array[i+1] = rapporto1;
+					rapp_array[i+2] = rapporto2;
+
+					break;
+
+				}
+
+			}
+
+			i = i + 3;
+
 		}
+
+		inserisci(posizione, cor_array, rapp_array);
 	  }
 
-	  function accoda(posizione, ncor, campo1, campo2, campo3, campo4, campo5) {
+	  function inserisci(posizione, ca, ra) {
 
 	  	var oTable = document.getElementById('trapp');
-	  	var oTr = oTable.insertRow(posizione);
-	  	var oThi = document.createElement("TH");
-	  	oThi.className="center";
-	  	var oTd1 = document.createElement("TD");
-	  	var oTd2 = document.createElement("TD");
-	  	var oTd3 = document.createElement("TD");
-	  	var oTd4 = document.createElement("TD");
-	  	var oTd5 = document.createElement("TD");
 
-	  	var oText_Campoi = document.createTextNode(ncor);
-	  	var oText_Campo1 = document.createTextNode(campo1);
-		var oText_Campo2 = document.createTextNode(campo2);
-		var oText_Campo3 = document.createTextNode(campo3);
-		var oText_Campo4 = document.createTextNode(campo4);
-		var oText_Campo5 = document.createTextNode(campo5);
+	  	var oTr0 = oTable.insertRow(posizione);      // creazione riga 1
+	  	var oTr1 = oTable.insertRow(posizione + 1);  // creazione riga 2
+	  	var oTr2 = oTable.insertRow(posizione + 2);  // creazione riga 3
 
-	  	oThi.appendChild(oText_Campoi);
-	  	oTd1.appendChild(oText_Campo1);
-	  	oTd2.appendChild(oText_Campo2);
-	  	oTd3.appendChild(oText_Campo3);
-	  	oTd4.appendChild(oText_Campo4);
-	  	oTd5.appendChild(oText_Campo5);
+	  	// Tabella pignone 9 -- creazione caselle
+	  	var oTh00 = document.createElement("TH");
+	  	var oTh01 = document.createElement("TH");
+	  	var oTh02 = document.createElement("TH");
+	  	var oTd00 = document.createElement("TD");
+	  	var oTd01 = document.createElement("TD");
+	  	var oTd02 = document.createElement("TD");
 
-	  	oTr.appendChild(oThi);
-		oTr.appendChild(oTd1);
-		oTr.appendChild(oTd2);
-		oTr.appendChild(oTd3);
-		oTr.appendChild(oTd4);
-		oTr.appendChild(oTd5);
+	  	// Tabella pignone 10 -- creazione caselle
+	  	var oTh10 = document.createElement("TH");
+	  	var oTh11 = document.createElement("TH");
+	  	var oTh12 = document.createElement("TH");
+	  	var oTd10 = document.createElement("TD");
+	  	var oTd11 = document.createElement("TD");
+	  	var oTd12 = document.createElement("TD");
+
+	  	// Tabella pignone 11 -- creazione caselle
+	  	var oTh20 = document.createElement("TH");
+	  	var oTh21 = document.createElement("TH");
+	  	var oTh22 = document.createElement("TH");
+	  	var oTd20 = document.createElement("TD");
+	  	var oTd21 = document.createElement("TD");
+	  	var oTd22 = document.createElement("TD");
+
+	  	// Tabella pignone 12 -- creazione caselle
+	  	var oTh30 = document.createElement("TH");
+	  	var oTh31 = document.createElement("TH");
+	  	var oTh32 = document.createElement("TH");
+	  	var oTd30 = document.createElement("TD");
+	  	var oTd31 = document.createElement("TD");
+	  	var oTd32 = document.createElement("TD");
+
+	  	// Tabella pignone 13 -- creazione caselle
+	  	var oTh40 = document.createElement("TH");
+	  	var oTh41 = document.createElement("TH");
+	  	var oTh42 = document.createElement("TH");
+	  	var oTd40 = document.createElement("TD");
+	  	var oTd41 = document.createElement("TD");
+	  	var oTd42 = document.createElement("TD");
+
+	  	// Tabella pignone 9 -- creazione valore
+	  	var oText_C_00 = document.createTextNode(ca[0]);
+	  	var oText_C_01 = document.createTextNode(ca[1]);
+		var oText_C_02 = document.createTextNode(ca[2]);
+		var oText_R_00 = document.createTextNode(ra[0]);
+	  	var oText_R_01 = document.createTextNode(ra[1]);
+		var oText_R_02 = document.createTextNode(ra[2]);
+
+		// Tabella pignone 10 -- creazione valore
+		var oText_C_10 = document.createTextNode(ca[3]);
+	  	var oText_C_11 = document.createTextNode(ca[4]);
+		var oText_C_12 = document.createTextNode(ca[5]);
+		var oText_R_10 = document.createTextNode(ra[3]);
+	  	var oText_R_11 = document.createTextNode(ra[4]);
+		var oText_R_12 = document.createTextNode(ra[5]);
+
+		// Tabella pignone 11 -- creazione valore
+		var oText_C_20 = document.createTextNode(ca[6]);
+	  	var oText_C_21 = document.createTextNode(ca[7]);
+		var oText_C_22 = document.createTextNode(ca[8]);
+		var oText_R_20 = document.createTextNode(ra[6]);
+	  	var oText_R_21 = document.createTextNode(ra[7]);
+		var oText_R_22 = document.createTextNode(ra[8]);
+
+		// Tabella pignone 12 -- creazione valore
+		var oText_C_30 = document.createTextNode(ca[9]);
+	  	var oText_C_31 = document.createTextNode(ca[10]);
+		var oText_C_32 = document.createTextNode(ca[11]);
+		var oText_R_30 = document.createTextNode(ra[9]);
+	  	var oText_R_31 = document.createTextNode(ra[10]);
+		var oText_R_32 = document.createTextNode(ra[11]);
+
+		// Tabella pignone 13 -- creazione valore
+		var oText_C_40 = document.createTextNode(ca[12]);
+	  	var oText_C_41 = document.createTextNode(ca[13]);
+		var oText_C_42 = document.createTextNode(ca[14]);
+		var oText_R_40 = document.createTextNode(ra[12]);
+	  	var oText_R_41 = document.createTextNode(ra[13]);
+		var oText_R_42 = document.createTextNode(ra[14]);
+
+		// Tabella pignone 9 -- inserimento valore 
+	  	oTh00.appendChild(oText_C_00);
+	  	oTh01.appendChild(oText_C_01);
+	  	oTh02.appendChild(oText_C_02);
+	  	oTd00.appendChild(oText_R_00);
+	  	oTd01.appendChild(oText_R_01);
+	  	oTd02.appendChild(oText_R_02);
+
+	  	// Tabella pignone 10 -- inserimento valore 
+	  	oTh10.appendChild(oText_C_10);
+	  	oTh11.appendChild(oText_C_11);
+	  	oTh12.appendChild(oText_C_12);
+	  	oTd10.appendChild(oText_R_10);
+	  	oTd11.appendChild(oText_R_11);
+	  	oTd12.appendChild(oText_R_12);
+
+	  	// Tabella pignone 11 -- inserimento valore 
+	  	oTh20.appendChild(oText_C_20);
+	  	oTh21.appendChild(oText_C_21);
+	  	oTh22.appendChild(oText_C_22);
+	  	oTd20.appendChild(oText_R_20);
+	  	oTd21.appendChild(oText_R_21);
+	  	oTd22.appendChild(oText_R_22);
+
+	  	// Tabella pignone 12 -- inserimento valore 
+	  	oTh30.appendChild(oText_C_30);
+	  	oTh31.appendChild(oText_C_31);
+	  	oTh32.appendChild(oText_C_32);
+	  	oTd30.appendChild(oText_R_30);
+	  	oTd31.appendChild(oText_R_31);
+	  	oTd32.appendChild(oText_R_32);
+
+	  	// Tabella pignone 13 -- inserimento valore 
+	  	oTh40.appendChild(oText_C_40);
+	  	oTh41.appendChild(oText_C_41);
+	  	oTh42.appendChild(oText_C_42);
+	  	oTd40.appendChild(oText_R_40);
+	  	oTd41.appendChild(oText_R_41);
+	  	oTd42.appendChild(oText_R_42);
+
+	  	// Inserimento caselle riga 0
+	  	oTr0.appendChild(oTh00);
+		oTr0.appendChild(oTd00);
+		oTr0.appendChild(oTh10);
+		oTr0.appendChild(oTd10);
+		oTr0.appendChild(oTh20);
+		oTr0.appendChild(oTd20);
+		oTr0.appendChild(oTh30);
+		oTr0.appendChild(oTd30);
+		oTr0.appendChild(oTh40);
+		oTr0.appendChild(oTd40);
+
+		// Inserimento caselle riga 0
+	  	oTr1.appendChild(oTh01);
+		oTr1.appendChild(oTd01);
+		oTr1.appendChild(oTh11);
+		oTr1.appendChild(oTd11);
+		oTr1.appendChild(oTh21);
+		oTr1.appendChild(oTd21);
+		oTr1.appendChild(oTh31);
+		oTr1.appendChild(oTd31);
+		oTr1.appendChild(oTh41);
+		oTr1.appendChild(oTd41);
+
+		// Inserimento caselle riga 0
+	  	oTr2.appendChild(oTh02);
+		oTr2.appendChild(oTd02);
+		oTr2.appendChild(oTh12);
+		oTr2.appendChild(oTd12);
+		oTr2.appendChild(oTh22);
+		oTr2.appendChild(oTd22);
+		oTr2.appendChild(oTh32);
+		oTr2.appendChild(oTd32);
+		oTr2.appendChild(oTh42);
+		oTr2.appendChild(oTd42);
+
 	  }
 
 	  function clean_table() {
 
 	  	var oTable = document.getElementById('trapp');
 	  	var nrows = oTable.rows.length;
-	 	
-	 	if (nrows == 7) {
-		  	oTable.deleteRow(oTable.rows.length-5);
-		  	oTable.deleteRow(oTable.rows.length-4);
+
+	  	if (nrows == 4) {
 		  	oTable.deleteRow(oTable.rows.length-3);
 		  	oTable.deleteRow(oTable.rows.length-2);
 		  	oTable.deleteRow(oTable.rows.length-1);
-	  	} else if (nrows == 5) {
-		  	oTable.deleteRow(oTable.rows.length-3);
-		  	oTable.deleteRow(oTable.rows.length-2);
-		  	oTable.deleteRow(oTable.rows.length-1);
-	  	}
+	 	}
 	  }
 
 	</script>
@@ -129,28 +275,21 @@
 			</div>
 		</div>
 		<br>
-		<a class="waves-effect waves-light btn-large btn-calc" value="Calcola" onClick="document.calculator.ans.value=rapporti(); show(); new_row(document.getElementById('cor').value);">CALCOLA</a>
+		<a class="waves-effect waves-light btn-large btn-calc" value="Calcola" onClick="document.calculator.ans.value=rapporti(); show(); new_row(document.getElementById('cor').value, document.getElementById('pign').value);">CALCOLA</a>
   	</form>
 </div>
 
 <div id="table" style="display:none" class="container">
 	<table class="striped" id="trapp">
-		<thead>
-			<tr>
-				<th class="center">Denti Corona</th>
-				<th colspan="5" class="center">Denti Pignone</th>
-			</tr>
-		</thead>
 
 		<tbody>
 
 			<tr id="trs">
-				<th></th>
-				<th>9</th>
-				<th>10</th>
-				<th>11</th>
-				<th>12</th>
-				<th>13</th>
+				<th colspan="2" class="center">9</th>
+				<th colspan="2" class="center">10</th>
+				<th colspan="2" class="center">11</th>
+				<th colspan="2" class="center">12</th>
+				<th colspan="2" class="center">13</th>
 			</tr>
 
 		</tbody>
