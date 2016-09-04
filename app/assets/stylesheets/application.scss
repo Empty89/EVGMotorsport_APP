@@ -90,7 +90,7 @@
 	}
 
 	main {
-		padding-top: 35px;
+		padding-top: 27px;
 		zoom: 180%;
 	}
 }
@@ -175,4 +175,16 @@ input[type=text]:disabled {
     padding: 2px;
     padding-top: 8px;
     padding-bottom: 9px;
+}
+
+table {
+	border: solid 0px #000000; 
+}
+
+.vertical-border-right {
+	border-right: solid 1px #000000; 
+}
+
+td {
+	border-right: solid 1px #000000; 
 }
