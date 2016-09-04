@@ -71,11 +71,28 @@
 	    transform: translateX(-50%);
 	    width: 93%;
 	    height: 93%;
+	    zoom: 300%;
 	}
 
 	.rid {
 		font-size: 2.9em;
+	}
+
+	.row1 {
 		padding-top: 8px;
+	}
+
+	.row2 {
+		margin-top: 0px;
+	}
+
+	nav {
+		zoom: 150%;
+	}
+
+	main {
+		padding-top: 35px;
+		zoom: 150%;
 	}
 }
 
@@ -103,9 +120,9 @@ input[type=range] + .thumb {
 }
 
 input[type=range] + .thumb.active .value {
-    margin-left: -1px;
-    margin-top: 5px;
-    font-size: 15px;
+    margin-left: 9px;
+    margin-top: 15px;
+    font-size: 25px;
 }
 
 input[type=range]::-webkit-slider-thumb{

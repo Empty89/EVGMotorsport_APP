@@ -10,10 +10,10 @@
 
 <%= form_tag(tracks_path, :method => "get", id: "search-form") do %>
   <div class="row">
-    <div class="input_field col s10">
+    <div class="input_field col s12 l10">
       <%= select_tag(:search, options_for_select([['Nord', 'nord'], ['Centro', 'centro'], ['Sud', 'sud']]), {prompt: 'Mostra tutti i tracciati'}) %>
     </div>
-      <%= submit_tag "Filtra", :onclick => "return show();", class: "form_submit col s2 waves-effect waves-light btn src-btn" %>
+      <%= submit_tag "Filtra", :onclick => "return show();", class: "form_submit col s12 l2 waves-effect waves-light btn src-btn" %>
   </div>
 <% end %>
 
@@ -32,7 +32,7 @@
               <%= image_tag track.city, size: "450x425" %>
             </div>
             <div class="card-content">
-              <h4 class ="rid light-blue-text text-darken-3"><%= track.name %> di <%= track.city %></h4>
+              <h4 class ="row2 light-blue-text text-darken-3"><%= track.name %> di <%= track.city %></h4>
             </div>
           </div>      
 

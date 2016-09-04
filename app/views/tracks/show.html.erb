@@ -29,7 +29,7 @@
 
     <div class="col s8">
       <!-- <%= image_tag @track.cover.url(:large) %>-->
-      <%= image_tag @track.city, size: "450x425" %>
+      <%= image_tag @track.city, size: "300x284" %>
     </div>
 
   </div>
@@ -50,8 +50,10 @@
     <%= @track.description %>
   </p>
 -->
-  
-  <%= render @track.city %>
+
+  <div class="center">
+    <%= render @track.city %>
+  </div>
 
   <div class="center">
     <%= link_to tracks_path do %>
