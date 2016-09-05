@@ -26,7 +26,7 @@
               All rights reserved. 
               <br><br> 
               <% if admin_signed_in? %>
-                <%= link_to 'Log Out', destroy_admin_session_path, :class => "deep-orange-text text-accent-3", :title => "Administration Log-out" %>
+                <%= link_to 'Log Out', destroy_admin_session_path, method: :delete, :class => "deep-orange-text text-accent-3", :title => "Administration Log-out" %>
               <% else %>
                 <%= link_to 'Admin', new_admin_session_path, :class => "deep-orange-text text-accent-3", :title => "Administration Log-in" %>
               <% end %>
