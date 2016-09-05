@@ -22,13 +22,13 @@
           <li><%= link_to icon('envelope fa-3x white-text'), 'mailto: info@evgmotorsport.com', :title => "Mail", :class => "side-nav-icons" %></li>
           <li class="side-nav-credits">
               © 2016 
-              <%= link_to 'EVG Motorsport', 'http://www.evgmotorsport.com', :class => "deep-orange-text text-accent-3", :title => "EVG MotorSport" %> 
+              <%= link_to 'EVG Motorsport', 'http://www.evgmotorsport.com', :class => "light-blue-text text-darken-3", :title => "EVG MotorSport" %> 
               All rights reserved. 
               <br><br> 
               <% if admin_signed_in? %>
-                <%= link_to 'Log Out', destroy_admin_session_path, method: :delete, :class => "deep-orange-text text-accent-3", :title => "Administration Log-out" %>
+                <%= link_to 'Log Out', destroy_admin_session_path, method: :delete, :class => "light-blue-text text-darken-3", :title => "Administration Log-out" %>
               <% else %>
-                <%= link_to 'Admin', new_admin_session_path, :class => "deep-orange-text text-accent-3", :title => "Administration Log-in" %>
+                <%= link_to 'Admin', new_admin_session_path, :class => "light-blue-text text-darken-3", :title => "Administration Log-in" %>
               <% end %>
           </li>
         </ul>
